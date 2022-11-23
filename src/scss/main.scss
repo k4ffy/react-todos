@@ -1,0 +1,44 @@
+@import 'base/reset';
+@import 'base/variables';
+@import 'base/mixins';
+
+
+
+$maxWidthContainer: 1170;
+
+body {
+	font-family: sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 140%;
+	color: $text-color;
+	background-color: $bg-color;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	overflow: hidden;
+
+	>main {
+		flex: 1 1 auto;
+	}
+}
+
+[class*="__container"] {
+	max-width: $maxWidthContainer + px;
+	margin: 0 auto;
+	padding: 0 15px;
+	box-sizing: content-box;
+}
+
+.hidden {
+	display: none;
+}
+
+
+@import 'blocks/button';
+@import 'blocks/title';
+@import 'blocks/header';
+@import 'blocks/todo';
