@@ -5,8 +5,10 @@ import {
   TOGGLE_COMPLETED_TODO,
 } from '../types';
 
+const persistState = JSON.parse(localStorage.getItem('reactTodos'));
+
 const initialState = {
-  todos: [],
+  todos: persistState || [],
 };
 
 export const todoReducer = (state = initialState, action) => {

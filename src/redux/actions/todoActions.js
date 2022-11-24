@@ -1,4 +1,9 @@
-import { ADD_TODO, REMOVE_TODO, TOGGLE_COMPLETED_TODO } from '../types';
+import {
+  ADD_TODO,
+  EDIT_TODO,
+  REMOVE_TODO,
+  TOGGLE_COMPLETED_TODO,
+} from '../types';
 
 export const addTodo = (payload) => ({
   type: ADD_TODO,
@@ -11,7 +16,7 @@ export const removeTodo = (payload) => ({
 });
 
 export const editTodo = (payload) => ({
-  type: REMOVE_TODO,
+  type: EDIT_TODO,
   payload,
 });
 
