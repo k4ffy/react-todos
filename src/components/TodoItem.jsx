@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  toggleCompletedTodo,
-  removeTodo,
   editTodo,
+  removeTodo,
+  toggleCompletedTodo,
 } from '../redux/actions/todoActions';
 
 const TodoItem = ({ id, title, descr, completed }) => {
   const dispatch = useDispatch();
+  const filter = useSelector((state) => state.app.currentFilter);
   const [editing, setEditing] = useState(false);
   const [titleValue, setTitleValue] = useState(title);
   const [descrValue, setDescrValue] = useState(descr);
@@ -22,6 +23,8 @@ const TodoItem = ({ id, title, descr, completed }) => {
     dispatch(editTodo({ id, title: titleValue, descr: descrValue }));
     setEditing(false);
   };
+
+  useEffect(() => handleCancelEditing, [filter]);
 
   return (
     <li className={`todo-list__item todo-item ${completed ? 'completed' : ''}`}>

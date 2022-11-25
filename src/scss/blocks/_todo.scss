@@ -108,7 +108,10 @@
 		line-height: 140%;
 		letter-spacing: 0.06em;
 		color: $text-color;
+		background-color: transparent;
+		border: none;
 		transition: all 0.3s ease 0s;
+		cursor: pointer;
 
 		&.active {
 			color: #000;
