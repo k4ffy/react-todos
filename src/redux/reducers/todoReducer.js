@@ -7,11 +7,7 @@ import {
 
 const persistState = JSON.parse(localStorage.getItem('reactTodos'));
 
-const initialState = {
-  todos: persistState || [],
-};
-
-export const todoReducer = (state = initialState, action) => {
+export const todoReducer = (state = persistState || [], action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -22,41 +18,32 @@ export const todoReducer = (state = initialState, action) => {
         descr: payload.descr,
         completed: false,
       };
-      return { ...state, todos: [...state.todos, newTodo] };
+      return [...state, newTodo];
 
     case REMOVE_TODO:
-      return {
-        ...state,
-        todos: state.todos.filter((obj) => obj.id !== payload),
-      };
+      return state.filter((obj) => obj.id !== payload);
 
     case EDIT_TODO:
-      return {
-        ...state,
-        todos: state.todos.map((obj) => {
-          if (obj.id === payload.id) {
-            return {
-              ...obj,
-              title: payload.title,
-              descr: payload.descr,
-            };
-          }
+      return state.map((obj) => {
+        if (obj.id === payload.id) {
+          return {
+            ...obj,
+            title: payload.title,
+            descr: payload.descr,
+          };
+        }
 
-          return obj;
-        }),
-      };
+        return obj;
+      });
 
     case TOGGLE_COMPLETED_TODO:
-      return {
-        ...state,
-        todos: state.todos.map((obj) => {
-          if (obj.id === payload) {
-            return { ...obj, completed: !obj.completed };
-          }
+      return state.todos.map((obj) => {
+        if (obj.id === payload) {
+          return { ...obj, completed: !obj.completed };
+        }
 
-          return obj;
-        }),
-      };
+        return obj;
+      });
 
     default:
       return state;

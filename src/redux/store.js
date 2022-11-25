@@ -5,10 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const store = createStore(rootReducer, composeWithDevTools());
 
 store.subscribe(() => {
-  localStorage.setItem(
-    'reactTodos',
-    JSON.stringify(store.getState().todo.todos),
-  );
+  localStorage.setItem('reactTodos', JSON.stringify(store.getState().todos));
 });
 
 export default store;

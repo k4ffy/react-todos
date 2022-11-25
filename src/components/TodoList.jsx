@@ -4,7 +4,7 @@ import EmptyListUI from './EmptyListUI';
 import TodoItem from './TodoItem';
 
 const TodoList = () => {
-  const todos = useSelector((state) => state.todo.todos);
+  const todos = useSelector((state) => state.todos);
   const filter = useSelector((state) => state.app.currentFilter);
 
   const filteredTodos = todos.filter((obj) => {
