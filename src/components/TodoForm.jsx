@@ -18,6 +18,11 @@ const Form = () => {
     }
   };
 
+  const resetForm = (e) => {
+    setTitle('');
+    setDescr('');
+  };
+
   return (
     <form onSubmit={handleSubmitForm} className="todo__form todo-form">
       <div className="todo-form__input-wrapper">
@@ -42,7 +47,11 @@ const Form = () => {
           <button className="button" type="submit">
             Add Task
           </button>
-          <button className="button button_transparent" type="reset">
+          <button
+            onClick={resetForm}
+            className="button button_transparent"
+            type="reset"
+          >
             Reset form
           </button>
         </div>
