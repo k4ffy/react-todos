@@ -1,6 +1,7 @@
 import {
   ADD_TODO,
   EDIT_TODO,
+  REMOVE_COMPLETED_TODOS,
   REMOVE_TODO,
   TOGGLE_COMPLETED_TODO,
 } from '../types';
@@ -44,6 +45,9 @@ export const todoReducer = (state = persistState || [], action) => {
 
         return obj;
       });
+
+    case REMOVE_COMPLETED_TODOS:
+      return state.filter((obj) => !obj.completed);
 
     default:
       return state;

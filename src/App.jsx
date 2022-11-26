@@ -1,3 +1,4 @@
+import Actions from './components/Actions';
 import Tabs from './components/Tabs';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
@@ -19,6 +20,8 @@ function App() {
               <Tabs />
               <TodoList />
             </div>
+
+            <Actions />
           </div>
         </section>
       </main>
