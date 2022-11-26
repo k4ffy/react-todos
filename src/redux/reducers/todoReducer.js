@@ -37,7 +37,7 @@ export const todoReducer = (state = persistState || [], action) => {
       });
 
     case TOGGLE_COMPLETED_TODO:
-      return state.todos.map((obj) => {
+      return state.map((obj) => {
         if (obj.id === payload) {
           return { ...obj, completed: !obj.completed };
         }
