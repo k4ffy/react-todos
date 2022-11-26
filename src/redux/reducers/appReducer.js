@@ -1,7 +1,13 @@
 import { SET_FILTER } from '../types';
 
+export const Filters = {
+  All: 'all',
+  Active: 'active',
+  Completed: 'completed',
+};
+
 const initialState = {
-  currentFilter: 'all',
+  currentFilter: Filters.All,
 };
 
 export const appReducer = (state = initialState, action) => {
