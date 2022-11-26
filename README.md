@@ -2,4 +2,3 @@
 
 - React
 - Redux
-- Redux Saga

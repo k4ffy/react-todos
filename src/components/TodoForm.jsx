@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../redux/actions/todoActions';
 
 const Form = () => {
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState('');
+  const [descr, setDescr] = useState('');
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+
+    if (title.trim().length > 0) {
+      dispatch(addTodo({ title, descr }));
+
+      setTitle('');
+      setDescr('');
+    }
+  };
+
+  const resetForm = (e) => {
+    setTitle('');
+    setDescr('');
+  };
+
   return (
-    <form className="todo__form todo-form">
+    <form onSubmit={handleSubmitForm} className="todo__form todo-form">
       <div className="todo-form__input-wrapper">
         <input
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
           required
           type="text"
-          name="todo-title"
           className="todo-form__input-title"
           placeholder="Task name here..."
         />
         <textarea
-          name="todo-descr"
+          onChange={(e) => setDescr(e.target.value)}
+          value={descr}
           className="todo-form__input-descr"
           placeholder="Description"
         />
@@ -23,7 +47,11 @@ const Form = () => {
           <button className="button" type="submit">
             Add Task
           </button>
-          <button className="button button_transparent" type="reset">
+          <button
+            onClick={resetForm}
+            className="button button_transparent"
+            type="reset"
+          >
             Reset form
           </button>
         </div>
