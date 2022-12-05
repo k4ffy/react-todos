@@ -20,8 +20,10 @@ const TodoItem = ({ id, title, descr, completed }) => {
   };
 
   const handleSaveEditing = () => {
-    dispatch(editTodo({ id, title: titleValue, descr: descrValue }));
-    setEditing(false);
+    if (titleValue.trim()) {
+      dispatch(editTodo({ id, title: titleValue, descr: descrValue }));
+      setEditing(false);
+    }
   };
 
   useEffect(() => handleCancelEditing, [filter]);
